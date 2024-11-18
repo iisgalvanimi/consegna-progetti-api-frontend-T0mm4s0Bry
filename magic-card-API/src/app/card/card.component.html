@@ -1,0 +1,28 @@
+<div class="container-fluid d-flex justify-content-center align-items-center min-vh-100 bg-light">
+
+
+  <div class="card text-center mx-auto shadow-lg" style="width: 25rem; border-radius: 15px;">
+    
+    
+    <div *ngIf="cardData; else loading">
+      <h1 class="card-title text-primary">{{ cardData.name }}</h1>
+      <img [src]="cardData.image_uris?.normal" alt="{{ cardData.name }}" class="img-fluid my-3 rounded" style="max-height: 300px;">
+      
+      <div class="card-body">
+        <p class="card-text text-secondary"><strong>Tipo:</strong> {{ cardData.type_line }}</p>
+        <p class="card-text text-secondary"><strong>Costo di mana:</strong> {{ cardData.mana_cost }}</p>
+        <p class="card-text text-secondary"><strong>Descrizione:</strong> {{ cardData.oracle_text }}</p>
+      </div>
+
+      <button class="btn btn-primary my-3">Aggiungi alla tua collezione</button>
+    </div>
+    
+   
+    <ng-template #loading>
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Caricamento...</span>
+      </div>
+    </ng-template>
+  </div>
+
+</div>

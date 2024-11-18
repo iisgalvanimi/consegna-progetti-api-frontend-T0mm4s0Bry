@@ -1,0 +1,17 @@
+<div class="container mt-5">
+    <h2>Cerca una carta Magic</h2>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Nome della carta" [(ngModel)]="searchQuery">
+      <button class="btn btn-primary" (click)="searchCard()">Cerca</button>
+    </div>
+    <div *ngIf="cardData">
+      <h3>{{ cardData.name }}</h3>
+      <img [src]="cardData.image_uris?.normal" alt="{{ cardData.name }}" class="img-fluid my-3">
+      <p><strong>Tipo:</strong> {{ cardData.type_line }}</p>
+      <p><strong>Costo di mana:</strong> {{ cardData.mana_cost }}</p>
+      <p><strong>Descrizione:</strong> {{ cardData.oracle_text }}</p>
+    </div>
+  </div>
+  
+
+  

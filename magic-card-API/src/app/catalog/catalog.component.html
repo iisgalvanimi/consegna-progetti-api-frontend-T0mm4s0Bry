@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Catalogo Carte</h2>
+  <div class="mb-3">
+    <label for="yearSelect" class="form-label">Seleziona un anno</label>
+    <select id="yearSelect" class="form-select" [(ngModel)]="selectedYear">
+      <option value="" disabled selected>-- Seleziona un anno --</option>
+      <option *ngFor="let year of [2023, 2022, 2021, 2020]" [value]="year">{{ year }}</option>
+    </select>
+    <button class="btn btn-primary mt-3" (click)="onYearChange()">Carica carte</button>
+  </div>
+
+  <div *ngIf="cards.length > 0" class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let card of cards">
+      <div class="card h-100">
+        <img *ngIf="card.image_uris?.normal" [src]="card.image_uris.normal" class="card-img-top" alt="{{ card.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ card.name }}</h5>
+          <p class="card-text"><strong>Tipo:</strong> {{ card.type_line }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="cards.length === 0" class="alert alert-warning mt-4" role="alert">
+    Nessuna carta trovata per l'anno selezionato.
+  </div>
+</div>
